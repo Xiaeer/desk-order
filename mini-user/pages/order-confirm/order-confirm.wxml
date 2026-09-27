@@ -1,0 +1,88 @@
+<view class="page confirm-page">
+	<view wx:if="{{items.length}}">
+		<view class="confirm-card card">
+			<view class="confirm-title">{{shopName}}</view>
+			<view class="confirm-tip">确认商品信息后提交订单，并发起支付流程。</view>
+		</view>
+
+		<view class="pay-summary card">
+			<view class="pay-summary-top">
+				<view class="pay-summary-title">支付建议</view>
+				<view wx:if="{{balanceEnough}}" class="pay-summary-badge">推荐余额支付</view>
+				<view wx:else class="pay-summary-badge pay-summary-badge-muted">余额不足</view>
+			</view>
+			<view class="pay-summary-desc">{{balanceEnough ? '余额充足，直接余额支付更快。' : '余额不足时可先充值，或继续使用微信支付。'}}</view>
+		</view>
+
+		<view class="confirm-list card">
+			<view class="confirm-item" wx:for="{{items}}" wx:key="cart_item_key">
+				<view>
+					<view class="item-name">{{item.name}}</view>
+					<view wx:if="{{item.option_summary}}" class="item-option">{{item.option_summary}}</view>
+					<view class="item-meta">¥{{item.price_text}} x {{item.quantity}}</view>
+				</view>
+				<view class="item-subtotal">¥{{item.subtotal_text}}</view>
+			</view>
+		</view>
+
+		<view class="table-card card">
+			<view class="remark-label">桌号绑定</view>
+			<view class="table-current">{{lockedByScene ? ('已扫码绑定桌号：' + selectedTableNo) : (selectedTableNo ? ('当前桌号：' + selectedTableNo) : '当前未绑定桌号，可直接下单或手动选择桌号')}}</view>
+			<view wx:if="{{lockedByScene}}" class="table-empty">当前订单来自桌码扫码，桌号已锁定；如需切换，请扫描对应桌码或重新从门店手动进入。</view>
+			<view wx:elif="{{tableLoading}}" class="table-empty">桌号加载中...</view>
+			<view wx:elif="{{tables.length}}" class="table-options">
+				<view class="table-option {{shopTableId ? '' : 'active'}}" bindtap="clearTableSelection">不绑定桌号</view>
+				<view
+					wx:for="{{tables}}"
+					wx:key="id"
+					class="table-option {{shopTableId === item.id ? 'active' : ''}}"
+					data-id="{{item.id}}"
+					data-no="{{item.table_no}}"
+					data-scene="{{item.scene_token}}"
+					bindtap="selectTable"
+				>
+					{{item.table_no}}
+				</view>
+			</view>
+			<view wx:else class="table-empty">当前店铺暂未配置桌号，仍可直接下单。</view>
+		</view>
+
+		<view class="remark-card card">
+			<view class="remark-label">订单备注</view>
+			<textarea class="remark-input" placeholder="例如：少辣、不要香菜" maxlength="100" bindinput="onRemarkInput"></textarea>
+		</view>
+
+		<view class="payment-card card">
+			<view class="remark-label">支付方式</view>
+			<view class="payment-hint">默认会根据余额自动推荐一种支付方式，你也可以手动切换。</view>
+			<view class="payment-item {{selectedPayMethod === 'balance' ? 'active' : ''}}" data-method="balance" bindtap="selectPayMethod">
+				<view>
+					<view class="payment-title">余额支付</view>
+					<view class="payment-desc">当前余额 ¥{{balanceText}} {{balanceEnough ? '，可直接抵扣' : '，余额不足'}}</view>
+				</view>
+				<view class="payment-action {{balanceEnough ? '' : 'muted'}}">{{balanceEnough ? '使用余额' : '余额不足'}}</view>
+			</view>
+			<view class="payment-item {{selectedPayMethod === 'wechat' ? 'active' : ''}}" data-method="wechat" bindtap="selectPayMethod">
+				<view>
+					<view class="payment-title">微信支付</view>
+					<view class="payment-desc">余额不足或暂不使用余额时可继续走微信支付</view>
+				</view>
+				<view class="payment-action">使用微信</view>
+			</view>
+			<view wx:if="{{!balanceEnough}}" class="payment-helper">
+				<view class="payment-helper-text">余额不足时可先充值，再返回使用余额支付。</view>
+				<button class="recharge-entry" bindtap="goRecharge">去充值</button>
+			</view>
+		</view>
+
+		<view class="submit-bar">
+			<view>
+				<view class="submit-label">应付金额</view>
+				<view class="submit-amount">¥{{totalAmountText}}</view>
+			</view>
+			<button class="btn-primary submit-btn" loading="{{submitting}}" bindtap="submitOrder">提交并{{selectedPayMethod === 'balance' ? '余额支付' : '微信支付'}}</button>
+		</view>
+	</view>
+
+	<view wx:else class="empty card">购物车为空，无法提交订单。</view>
+</view>

@@ -1,0 +1,64 @@
+.bottom-nav-shell {
+	position: fixed;
+	left: 24rpx;
+	right: 24rpx;
+	bottom: 24rpx;
+	z-index: 20;
+}
+
+.bottom-nav {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 12rpx;
+	border-radius: 36rpx;
+	background: rgba(255, 255, 255, 0.96);
+	backdrop-filter: blur(24rpx);
+	box-shadow: 0 18rpx 48rpx rgba(15, 23, 42, 0.12);
+}
+
+.nav-item {
+	flex: 1;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: center;
+	gap: 10rpx;
+	padding: 16rpx 0;
+	border-radius: 26rpx;
+	color: #98a2b3;
+}
+
+.nav-item.active {
+	background: #fff4ec;
+	color: #101828;
+}
+
+.nav-pill {
+	width: 10rpx;
+	height: 34rpx;
+	border-radius: 999rpx;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background: transparent;
+}
+
+.nav-item.active .nav-pill {
+	background: linear-gradient(180deg, #ff8a33, #ff6a3d);
+}
+
+.nav-label {
+	font-size: 23rpx;
+	font-weight: 600;
+	line-height: 1;
+}
+
+.nav-desc {
+	font-size: 18rpx;
+	color: #98a2b3;
+}
+
+.nav-item.active .nav-desc {
+	color: #667085;
+}

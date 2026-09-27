@@ -1,0 +1,16 @@
+<view class="bottom-nav-shell">
+	<view class="bottom-nav card">
+		<view
+			wx:for="{{items}}"
+			wx:key="key"
+			class="nav-item {{active === item.key ? 'active' : ''}}"
+			data-key="{{item.key}}"
+			data-path="{{item.path}}"
+			bindtap="handleTap"
+		>
+			<view class="nav-pill"></view>
+			<view class="nav-label">{{item.label}}</view>
+			<view class="nav-desc">{{item.desc}}</view>
+		</view>
+	</view>
+</view>

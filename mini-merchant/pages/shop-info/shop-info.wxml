@@ -1,0 +1,83 @@
+<view class="container" wx:if="{{shop}}">
+  <!-- 店铺状态 -->
+  <view class="card status-card">
+    <view class="status-row">
+      <text class="status-label">营业状态</text>
+      <view class="open-toggle" bindtap="toggleOpen">
+        <view class="toggle-dot {{shop.is_open ? 'on' : 'off'}}"></view>
+        <text class="toggle-text">{{shop.is_open ? '营业中' : '休息中'}}</text>
+      </view>
+    </view>
+    <view class="status-row">
+      <text class="status-label">审核状态</text>
+      <text class="status-tag {{shop.status === 1 ? 'status-accepted' : shop.status === 0 ? 'status-pending' : 'status-cancelled'}}">
+        {{shop.status === 0 ? '待审核' : shop.status === 1 ? '已通过' : '已拒绝'}}
+      </text>
+    </view>
+  </view>
+
+  <!-- 店铺信息 -->
+  <view class="card">
+    <view class="card-header">
+      <text class="section-title">店铺信息</text>
+      <text wx:if="{{shop.status === 1}}" class="edit-btn" bindtap="toggleEdit">{{editing ? '保存' : '编辑'}}</text>
+      <text wx:if="{{editing}}" class="cancel-btn" bindtap="cancelEdit">取消</text>
+    </view>
+
+    <view wx:if="{{shop.status === 1}}" class="audit-tip">
+      修改店铺名称、地址、电话、坐标、描述等审核字段后，将重新进入审核，审核期间无法营业。
+    </view>
+
+    <view wx:elif="{{shop.status === 0}}" class="audit-tip">
+      店铺当前正在审核中，审核字段暂不可修改。
+    </view>
+
+    <view wx:elif="{{shop.status === 2}}" class="audit-tip">
+      店铺审核未通过，请前往重新申请页提交新的入驻信息。
+    </view>
+
+    <view class="form-item">
+      <text class="form-label">店名</text>
+      <input wx:if="{{editing}}" class="form-input" value="{{form.name}}" bindinput="onInputName" />
+      <text wx:else class="form-value">{{shop.name}}</text>
+    </view>
+
+    <view class="form-item">
+      <text class="form-label">地址</text>
+      <input wx:if="{{editing}}" class="form-input" value="{{form.address}}" bindinput="onInputAddress" />
+      <text wx:else class="form-value">{{shop.address}}</text>
+    </view>
+
+    <view class="form-item">
+      <text class="form-label">电话</text>
+      <input wx:if="{{editing}}" class="form-input" type="number" value="{{form.phone}}" bindinput="onInputPhone" />
+      <text wx:else class="form-value">{{shop.phone}}</text>
+    </view>
+
+    <view class="form-item">
+      <text class="form-label">描述</text>
+      <input wx:if="{{editing}}" class="form-input" value="{{form.description}}" bindinput="onInputDesc" />
+      <text wx:else class="form-value">{{shop.description || '暂无'}}</text>
+    </view>
+
+    <view class="form-item">
+      <text class="form-label">坐标</text>
+      <text class="form-value">{{shop.latitude}}, {{shop.longitude}}</text>
+    </view>
+  </view>
+
+  <view class="card action-card">
+    <view class="action-row" bindtap="goAccountSecurity">
+      <text class="section-title">账号安全</text>
+      <text class="edit-btn">设置 / 重置 H5 密码</text>
+    </view>
+    <view class="audit-tip action-tip">
+      老商户迁移到 merchant-h5 时，请先在这里设置 H5 登录密码，然后再使用手机号 + 密码登录网页端。
+    </view>
+  </view>
+
+  <!-- 退出登录 -->
+  <view class="btn-warn" bindtap="handleLogout">退出登录</view>
+</view>
+
+<view class="empty-tip" wx:else>加载中...</view>

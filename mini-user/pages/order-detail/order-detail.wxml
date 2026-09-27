@@ -1,0 +1,47 @@
+<view class="page detail-page">
+	<view wx:if="{{loading}}" class="empty card">订单详情加载中...</view>
+	<view wx:elif="{{order}}">
+		<view class="detail-card card">
+			<view class="detail-top">
+				<view class="detail-shop">{{order.shop_name}}</view>
+				<view class="detail-status">{{order.status_text}}</view>
+			</view>
+			<view class="detail-desc">订单摘要与支付、退款操作都在这里。</view>
+			<view class="detail-line">订单号：{{order.order_no}}</view>
+			<view class="detail-line">支付方式：{{order.pay_channel_text || '待支付'}}</view>
+			<view class="detail-line">下单时间：{{order.created_at_text}}</view>
+			<view class="detail-line">支付时间：{{order.paid_at_text}}</view>
+			<view class="detail-line">备注：{{order.remark || '无'}}</view>
+			<view class="detail-total">总金额 ¥{{order.total_amount_text}}</view>
+		</view>
+
+		<view class="detail-card card">
+			<view class="section-title">商品明细</view>
+			<view class="item-row" wx:for="{{order.items}}" wx:key="id">
+				<view>
+					<view class="item-name">{{item.name}}</view>
+					<view wx:if="{{item.option_summary}}" class="item-meta">{{item.option_summary}}</view>
+					<view class="item-meta">¥{{item.price_text}} x {{item.quantity}}</view>
+				</view>
+				<view class="item-subtotal">¥{{item.subtotal_text}}</view>
+			</view>
+		</view>
+
+		<view wx:if="{{order.can_pay}}" class="detail-actions card">
+			<view class="section-title">继续支付</view>
+			<view class="detail-balance">当前余额 ¥{{balanceText}}，可直接切换支付方式。</view>
+			<view class="detail-pay-row">
+				<button class="detail-secondary-btn" bindtap="goRecharge">去充值</button>
+				<button class="detail-balance-btn" loading="{{paying}}" disabled="{{paying}}" data-method="balance" bindtap="payOrder">余额支付</button>
+			</view>
+			<button class="btn-primary detail-pay-btn" loading="{{paying}}" disabled="{{paying}}" data-method="wechat" bindtap="payOrder">微信支付</button>
+		</view>
+
+		<view wx:if="{{order.can_cancel || order.can_refund_balance}}" class="detail-actions card">
+			<view class="section-title">订单操作</view>
+			<view class="detail-balance">{{order.can_refund_balance ? '余额支付订单可退回钱包，退款后可在余额流水中查看记录。' : '待支付订单可直接取消。'}}</view>
+			<button class="detail-danger-btn" loading="{{actioning}}" disabled="{{actioning || paying}}" bindtap="handleOrderAction">{{order.can_refund_balance ? (order.refund_action_text || '退款回余额') : '取消订单'}}</button>
+		</view>
+	</view>
+	<view wx:else class="empty card">订单不存在或已失效。</view>
+</view>

@@ -1,0 +1,59 @@
+.image-picker {
+  width: 100%;
+  height: 320rpx;
+  background: #f9f9f9;
+  border-radius: 12rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20rpx;
+  overflow: hidden;
+}
+
+.preview-img {
+  width: 100%;
+  height: 100%;
+}
+
+.picker-placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #ccc;
+}
+
+.plus {
+  font-size: 80rpx;
+  line-height: 1;
+}
+
+.picker-text {
+  font-size: 24rpx;
+  margin-top: 10rpx;
+}
+
+.upload-tip {
+  margin: -4rpx 0 20rpx;
+  font-size: 22rpx;
+  color: #999;
+}
+
+.sale-switch {
+  display: flex;
+  align-items: center;
+  gap: 12rpx;
+}
+
+.switch-indicator {
+  width: 20rpx;
+  height: 20rpx;
+  border-radius: 50%;
+}
+
+.switch-indicator.on {
+  background: #07c160;
+}
+
+.switch-indicator.off {
+  background: #ee0a24;
+}

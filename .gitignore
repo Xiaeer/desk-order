@@ -1,0 +1,47 @@
+admin-web/node_modules/
+admin-web/dist/
+admin-web/.env.production
+merchant-h5/node_modules/
+merchant-h5/dist/
+merchant-h5/.env.production
+pos-client/node_modules/
+pos-client/dist/
+pos-client/build/
+note.md
+backend/backend*
+backend/uploads/
+deploy/.artifacts
+deploy/backend
+deploy/config.psd1
+mini-user/utils/config.local.js
+
+# Local configuration and credentials
+.env
+.env.*
+!**/.env.example
+!**/.env.*.example
+**/config.local.js
+**/project.private.config.json
+
+# Real backend and deployment configuration
+backend/configs/config.yaml
+deploy/env/*/backend-configs/config.yaml
+deploy/config.*.psd1
+!deploy/config.example.psd1
+
+# Keys and certificates
+*.pem
+*.key
+*.p12
+*.pfx
+*.jks
+*.keystore
+*.crt
+*.cer
+*.der
+
+# Local secret stores and data artifacts
+secrets/
+*.dump
+*.bak
+*.backup

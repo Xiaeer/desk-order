@@ -1,0 +1,7 @@
+<view class="container">
+  <view class="card">
+    <view class="spinner"></view>
+    <view class="title">正在进入商户端</view>
+    <view class="desc">正在检查登录状态与店铺审核状态...</view>
+  </view>
+</view>

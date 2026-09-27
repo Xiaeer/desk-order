@@ -1,0 +1,53 @@
+.container {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f6f7fb;
+  padding: 32rpx;
+  box-sizing: border-box;
+}
+
+.card {
+  width: 100%;
+  max-width: 560rpx;
+  background: #ffffff;
+  border-radius: 24rpx;
+  padding: 56rpx 40rpx;
+  box-sizing: border-box;
+  text-align: center;
+  box-shadow: 0 12rpx 36rpx rgba(15, 35, 95, 0.08);
+}
+
+.spinner {
+  width: 72rpx;
+  height: 72rpx;
+  margin: 0 auto 28rpx;
+  border-radius: 50%;
+  border: 6rpx solid #d7dfef;
+  border-top-color: #07c160;
+  animation: spin 0.9s linear infinite;
+}
+
+.title {
+  font-size: 34rpx;
+  font-weight: 600;
+  color: #1f2937;
+}
+
+.desc {
+  margin-top: 16rpx;
+  font-size: 26rpx;
+  line-height: 1.6;
+  color: #6b7280;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "appId": "com.deskorder.pos",
+  "productName": "DeskOrder POS",
+  "directories": {
+    "output": "dist"
+  },
+  "files": [
+    "build/main/**/*",
+    "build/renderer/**/*",
+    "src/renderer/**/*",
+    "package.json"
+  ],
+  "asar": true,
+  "win": {
+    "signAndEditExecutable": false,
+    "target": [
+      "portable"
+    ],
+    "artifactName": "DeskOrder-POS-${version}-${arch}.${ext}"
+  }
+}

@@ -1,0 +1,118 @@
+.cart-page {
+	padding: 24rpx;
+	padding-bottom: 200rpx;
+}
+
+.cart-header {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 24rpx;
+}
+
+.cart-tip {
+	margin: 14rpx 4rpx 4rpx;
+	font-size: 24rpx;
+	line-height: 1.6;
+	color: #98a2b3;
+}
+
+.cart-shop {
+	font-size: 32rpx;
+	font-weight: 600;
+}
+
+.cart-clear {
+	color: #ff6a3d;
+	font-size: 26rpx;
+}
+
+.cart-item {
+	margin-top: 20rpx;
+	padding: 24rpx;
+}
+
+.cart-info,
+.cart-bottom {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.cart-name {
+	font-size: 30rpx;
+	font-weight: 600;
+}
+
+.cart-price,
+.cart-subtotal {
+	color: #ff6a3d;
+}
+
+.cart-bottom {
+	margin-top: 18rpx;
+}
+
+.stepper {
+	display: flex;
+	align-items: center;
+}
+
+.step-btn {
+	width: 48rpx;
+	height: 48rpx;
+	line-height: 48rpx;
+	text-align: center;
+	border-radius: 50%;
+	background: #eef1f5;
+}
+
+.step-btn.active {
+	background: #ff6a3d;
+	color: #ffffff;
+}
+
+.step-count {
+	min-width: 48rpx;
+	text-align: center;
+}
+
+.cart-submit {
+	position: fixed;
+	left: 24rpx;
+	right: 24rpx;
+	bottom: 24rpx;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 24rpx 26rpx;
+	border-radius: 28rpx;
+	background: #111827;
+	color: #ffffff;
+	box-shadow: 0 18rpx 42rpx rgba(15, 23, 42, 0.16);
+}
+
+.submit-label {
+	font-size: 24rpx;
+}
+
+.submit-amount {
+	margin-top: 6rpx;
+	font-size: 34rpx;
+	font-weight: 700;
+}
+
+.submit-btn {
+	margin: 0;
+	border: none;
+	border-radius: 999rpx;
+	width: 228rpx;
+	height: 80rpx;
+	line-height: 80rpx;
+}
+
+.empty {
+	padding: 60rpx 24rpx;
+	text-align: center;
+	color: #8b8f9c;
+}

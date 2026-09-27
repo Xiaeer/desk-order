@@ -1,0 +1,155 @@
+.shop-status-card {
+  display: flex;
+  align-items: center;
+}
+
+.shop-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.shop-name {
+  font-size: 36rpx;
+  font-weight: bold;
+  color: #333;
+}
+
+.open-switch {
+  display: flex;
+  align-items: center;
+  gap: 12rpx;
+  padding: 12rpx 24rpx;
+  border-radius: 30rpx;
+  background: #f5f5f5;
+}
+
+.switch-label {
+  font-size: 24rpx;
+  color: #666;
+}
+
+.switch-dot {
+  width: 20rpx;
+  height: 20rpx;
+  border-radius: 50%;
+}
+
+.switch-dot.on {
+  background: #07c160;
+}
+
+.switch-dot.off {
+  background: #ccc;
+}
+
+.stats-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.stat-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+}
+
+.stat-num {
+  font-size: 44rpx;
+  font-weight: bold;
+  color: #07c160;
+}
+
+.stat-label {
+  font-size: 24rpx;
+  color: #999;
+  margin-top: 8rpx;
+}
+
+.stat-divider {
+  width: 1rpx;
+  height: 60rpx;
+  background: #eee;
+}
+
+.section-title {
+  font-size: 30rpx;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 20rpx;
+  margin-top: 10rpx;
+}
+
+.order-card {
+  padding: 24rpx 30rpx;
+}
+
+.order-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16rpx;
+}
+
+.order-no {
+  font-size: 26rpx;
+  color: #666;
+}
+
+.order-items-preview {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12rpx;
+  margin-bottom: 16rpx;
+}
+
+.item-preview-card {
+  display: flex;
+  flex-direction: column;
+  gap: 6rpx;
+}
+
+.order-table {
+  margin-bottom: 16rpx;
+  font-size: 24rpx;
+  color: #ff6a3d;
+  font-weight: 600;
+}
+
+.item-name {
+  font-size: 26rpx;
+  color: #333;
+  background: #f5f5f5;
+  padding: 6rpx 16rpx;
+  border-radius: 8rpx;
+}
+
+.item-option-summary {
+  max-width: 480rpx;
+  font-size: 22rpx;
+  line-height: 1.5;
+  color: #98a2b3;
+}
+
+.order-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.order-amount {
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #ee0a24;
+}
+
+.accept-btn {
+  background: #07c160;
+  color: #fff;
+  font-size: 26rpx;
+  padding: 10rpx 40rpx;
+  border-radius: 30rpx;
+}

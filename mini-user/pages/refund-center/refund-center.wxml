@@ -1,0 +1,54 @@
+<view class="page refund-page">
+	<view class="subscribe-card card">
+		<view>
+			<view class="subscribe-title">微信退款通知</view>
+			<view class="subscribe-desc">开启后，退款结果会通过微信服务通知提醒你。</view>
+		</view>
+		<button class="subscribe-btn" loading="{{subscribing}}" disabled="{{subscribing || !subscribeEnabled}}" bindtap="handleSubscribeRefund">开启通知</button>
+	</view>
+
+	<view class="tab-bar card">
+		<view class="tab-item {{activeTab === 'records' ? 'active' : ''}}" data-tab="records" bindtap="switchTab">退款记录</view>
+		<view class="tab-item {{activeTab === 'notifications' ? 'active' : ''}}" data-tab="notifications" bindtap="switchTab">处理通知</view>
+	</view>
+
+	<view wx:if="{{loading}}" class="empty card">退款信息加载中...</view>
+
+	<block wx:elif="{{activeTab === 'records'}}">
+		<view wx:if="{{records.length}}">
+			<view class="record-card card" wx:for="{{records}}" wx:key="id">
+				<view class="record-top">
+					<view>
+						<view class="record-title">{{item.source_type === 'recharge' ? '充值退款' : '订单退款'}}</view>
+						<view class="record-sub">{{item.source_title || '退款记录'}}{{item.source_no ? ' · ' + item.source_no : ''}}</view>
+					</view>
+					<view class="record-status">{{item.status_text}}</view>
+				</view>
+				<view class="record-line">申请 ¥{{item.requested_total_amount_text}}</view>
+				<view wx:if="{{item.approved_total_amount}}" class="record-line">处理 ¥{{item.approved_total_amount_text}}</view>
+				<view wx:if="{{item.request_note}}" class="record-line">备注：{{item.request_note}}</view>
+				<view class="record-line">时间：{{item.created_at_text}}</view>
+				<view wx:if="{{item.can_cancel}}" class="record-action-row">
+					<view class="record-action-text">申请仍在待审核，可主动撤回。</view>
+					<button class="record-cancel-btn" size="mini" loading="{{cancelingRefundId === item.id}}" disabled="{{cancelingRefundId > 0}}" data-id="{{item.id}}" bindtap="handleCancelRefund">{{item.cancel_action_text}}</button>
+				</view>
+				<view class="record-result">{{item.result_text || '平台正在处理退款请求。'}}</view>
+			</view>
+		</view>
+		<view wx:else class="empty card">暂时还没有退款记录。</view>
+	</block>
+
+	<block wx:elif="{{activeTab === 'notifications'}}">
+		<view wx:if="{{notifications.length}}">
+			<view class="notice-card card" wx:for="{{notifications}}" wx:key="id">
+				<view class="notice-top">
+					<view class="notice-title">{{item.title}}</view>
+					<view wx:if="{{!item.is_read}}" class="notice-dot"></view>
+				</view>
+				<view class="notice-content">{{item.content}}</view>
+				<view class="notice-time">{{item.created_at_text}}</view>
+			</view>
+		</view>
+		<view wx:else class="empty card">暂时还没有退款通知。</view>
+	</block>
+</view>

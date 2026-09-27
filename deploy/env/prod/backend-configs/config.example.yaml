@@ -1,0 +1,54 @@
+server:
+  port: 8080
+  mode: release
+
+mysql:
+  host: 127.0.0.1
+  port: 3306
+  user: deskorder
+  password: ""
+  dbname: desk_order
+  charset: utf8mb4
+  max_idle_conns: 10
+  max_open_conns: 100
+
+redis:
+  host: 127.0.0.1
+  port: 6379
+  password: ""
+  db: 0
+
+jwt:
+  secret: replace-with-a-random-secret
+  expire_hours: 168
+
+admin:
+  enabled: false
+  username: admin
+  password: ""
+  nickname: Administrator
+
+wechat:
+  user_appid: ""
+  user_secret: ""
+  user_code_env_version: release
+  merchant_appid: ""
+  merchant_secret: ""
+  mch_id: ""
+  mch_api_key: ""
+  notify_url: https://api.example.com/api/v1/user/payment/notify
+  refund_cert_p12_path: ""
+  refund_sync_interval_seconds: 30
+  refund_subscribe_page: pages/refund-center/refund-center
+  refund_review_subscribe_template_id: ""
+  refund_review_subscribe_order_no_key: ""
+  refund_review_subscribe_amount_key: ""
+  refund_review_subscribe_status_key: ""
+  refund_review_subscribe_remark_key: ""
+  refund_result_subscribe_template_id: ""
+  refund_result_subscribe_order_no_key: ""
+  refund_result_subscribe_amount_key: ""
+  refund_result_subscribe_status_key: ""
+  refund_result_subscribe_remark_key: ""
+  pay_mode: real
+  mock_pay_result: success

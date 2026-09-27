@@ -1,0 +1,91 @@
+<view class="page menu-page">
+	<view wx:if="{{loading}}" class="menu-loading">菜单加载中...</view>
+	<view wx:else class="menu-layout">
+		<scroll-view class="category-panel" scroll-y>
+			<view
+				wx:for="{{categories}}"
+				wx:key="id"
+				class="category-item {{activeCategoryIndex === index ? 'active' : ''}}"
+				data-index="{{index}}"
+				bindtap="switchCategory"
+			>
+				{{item.name}}
+			</view>
+		</scroll-view>
+
+		<scroll-view class="product-panel" scroll-y>
+			<view class="shop-title-row">
+				<view class="shop-title">{{shopName}}</view>
+				<view wx:if="{{tableNo}}" class="table-badge">桌号 {{tableNo}}</view>
+			</view>
+			<view class="shop-subtitle">先选商品，再加入购物车，最后统一结算</view>
+			<view wx:if="{{currentProducts.length}}">
+				<view class="product-card card" wx:for="{{currentProducts}}" wx:key="id">
+					<image wx:if="{{item.image}}" class="product-image" src="{{item.image}}" mode="aspectFill"></image>
+					<view wx:else class="product-image placeholder">图</view>
+					<view class="product-content">
+						<view class="product-name">{{item.name}}</view>
+						<view class="product-desc">{{item.description || '暂无描述'}}</view>
+						<view wx:if="{{item.has_options}}" class="product-option-tip">{{item.options.length}} 组选项，可自定义口味/加料</view>
+						<view class="product-footer">
+							<view class="product-price">¥{{item.price_text}}</view>
+							<view wx:if="{{!item.has_options}}" class="stepper">
+								<view class="step-btn" data-id="{{item.id}}" bindtap="subItem">-</view>
+								<view class="step-count">{{productCountMap[item.id] || 0}}</view>
+								<view class="step-btn active" data-index="{{index}}" bindtap="addItem">+</view>
+							</view>
+							<view wx:else class="option-picker-btn" data-index="{{index}}" bindtap="addItem">{{productCountMap[item.id] ? ('已选 ' + productCountMap[item.id] + ' 份') : '选规格加入'}}</view>
+						</view>
+					</view>
+				</view>
+			</view>
+			<view wx:else class="empty card">当前分类暂无在售商品</view>
+		</scroll-view>
+	</view>
+
+	<cart-bar
+		count="{{cartCount}}"
+		amount-text="{{totalAmountText}}"
+		label-text="已选 {{cartCount}} 件"
+		checkout-text="去结算"
+		bindcarttap="openCart"
+		bindcheckouttap="goConfirm"
+	></cart-bar>
+
+	<view wx:if="{{showOptionPopup && optionProduct}}" class="option-mask" bindtap="closeOptionPopup">
+		<view class="option-dialog card" catchtap="noop">
+			<view class="row-between option-dialog-head">
+				<view class="option-dialog-title">选择规格</view>
+				<view class="option-dialog-close" bindtap="closeOptionPopup">关闭</view>
+			</view>
+			<view class="option-product-name">{{optionProduct.name}}</view>
+			<view class="option-product-desc">{{optionProduct.description || '请选择后加入购物车'}}</view>
+			<view wx:for="{{optionGroups}}" wx:key="id" class="option-group">
+				<view class="option-group-title">{{item.name}}</view>
+				<view class="option-group-helper">{{item.helper_text}}</view>
+				<view class="option-value-list">
+					<view
+						wx:for="{{item.values}}"
+						wx:for-item="value"
+						wx:key="id"
+						class="option-value-chip {{value.selected ? 'active' : ''}}"
+						data-group-id="{{item.id}}"
+						data-value-id="{{value.id}}"
+						bindtap="toggleOptionValue"
+					>
+						<text>{{value.name}}</text>
+						<text wx:if="{{value.price_delta_text}}" class="option-value-price">{{value.price_delta_text}}</text>
+					</view>
+				</view>
+			</view>
+			<view wx:if="{{optionSummaryPreview}}" class="option-summary-preview">已选：{{optionSummaryPreview}}</view>
+			<view class="option-submit-bar">
+				<view>
+					<view class="cart-label">当前价格</view>
+					<view class="option-submit-price">¥{{optionPopupPriceText}}</view>
+				</view>
+				<button class="btn-primary option-submit-btn" bindtap="confirmOptionSelection">加入购物车</button>
+			</view>
+		</view>
+	</view>
+</view>

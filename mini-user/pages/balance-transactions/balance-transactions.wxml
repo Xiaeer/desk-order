@@ -1,0 +1,19 @@
+<view class="page balance-page">
+	<view class="balance-header card">
+		<view class="balance-title">余额流水</view>
+		<view class="balance-desc">查看充值、赠送与消费记录。</view>
+	</view>
+	<view wx:if="{{loading}}" class="empty card">余额流水加载中...</view>
+	<view wx:elif="{{list.length}}">
+		<view class="tx-card card" wx:for="{{list}}" wx:key="id">
+			<view class="tx-top">
+				<view class="tx-remark">{{item.remark}}</view>
+				<view class="tx-amount {{item.change_amount > 0 ? 'plus' : 'minus'}}">{{item.change_text}}</view>
+			</view>
+			<view class="tx-line">余额：¥{{item.balance_text}}</view>
+			<view class="tx-line">类型：{{item.biz_type}}</view>
+			<view class="tx-line">时间：{{item.created_at_text}}</view>
+		</view>
+	</view>
+	<view wx:else class="empty card">暂时还没有余额流水记录。</view>
+</view>

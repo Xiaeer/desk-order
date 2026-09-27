@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "点餐",
+  "enablePullDownRefresh": true,
+  "usingComponents": {
+    "cart-bar": "/components/cart-bar/cart-bar"
+  }
+}

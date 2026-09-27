@@ -1,0 +1,116 @@
+<view class="page page-with-bottom-nav mine-page">
+	<view class="mine-hero">
+		<view class="mine-hero-glow"></view>
+		<view class="profile-card card">
+			<image wx:if="{{profile && profile.avatar}}" class="avatar-image" src="{{profile.avatar}}" mode="aspectFill"></image>
+			<view wx:else class="avatar-pill">我</view>
+			<view class="profile-main">
+				<view class="profile-title">{{greeting}}，{{displayName}}</view>
+				<view class="profile-subtitle">平台统一钱包余额，可在所有接入门店使用</view>
+				<button wx:if="{{!(profile && profile.phone)}}" class="profile-contact-button" open-type="getPhoneNumber" bindgetphonenumber="bindPhoneNumber">未绑定手机号，点击绑定</button>
+				<view wx:else class="profile-contact">{{phoneDisplay}}</view>
+			</view>
+			<button class="profile-action" bindtap="openProfileEditor">编辑资料</button>
+		</view>
+	</view>
+
+	<view class="wallet-card card">
+		<view class="wallet-top">
+			<view>
+				<view class="wallet-label">当前余额</view>
+				<view class="wallet-amount">¥{{profileView.balanceText || '0.00'}}</view>
+			</view>
+			<button class="btn-primary wallet-btn" bindtap="goRecharge">去充值</button>
+		</view>
+		<view class="wallet-grid">
+			<view class="wallet-grid-item">
+				<view class="wallet-grid-value">¥{{profileView.rechargeText || '0.00'}}</view>
+				<view class="wallet-grid-label">累计充值</view>
+			</view>
+			<view class="wallet-grid-item">
+				<view class="wallet-grid-value">¥{{profileView.giftText || '0.00'}}</view>
+				<view class="wallet-grid-label">累计赠送</view>
+			</view>
+			<view class="wallet-grid-item">
+				<view class="wallet-grid-value">¥{{profileView.consumeText || '0.00'}}</view>
+				<view class="wallet-grid-label">累计消费</view>
+			</view>
+		</view>
+		<view class="wallet-actions">
+			<view class="wallet-action" bindtap="goRecharge">余额充值</view>
+			<view class="wallet-action secondary" bindtap="goTransactions">余额流水</view>
+		</view>
+	</view>
+
+	<view class="activity-card card" bindtap="goRecharge">
+		<view>
+			<view class="section-title">当前充值活动</view>
+			<view class="activity-text">{{featuredActivityText}}</view>
+		</view>
+		<view class="activity-arrow">></view>
+	</view>
+
+	<view class="function-card card">
+		<view wx:if="{{showRefundCenter}}" class="function-item" bindtap="goRefundCenter">
+			<view>
+				<view class="function-title-row">
+					<view class="function-title">退款中心</view>
+					<view wx:if="{{profile.refund_unread_count}}" class="function-badge">{{profile.refund_unread_count}}</view>
+				</view>
+				<view class="function-desc">查看退款记录和平台处理通知</view>
+			</view>
+			<view class="function-arrow">></view>
+		</view>
+		<view class="function-item" bindtap="goTransactions">
+			<view>
+				<view class="function-title">余额流水</view>
+				<view class="function-desc">查看每一笔充值、赠送与消费记录</view>
+			</view>
+			<view class="function-arrow">></view>
+		</view>
+		<view class="function-item" bindtap="goRecharge">
+			<view>
+				<view class="function-title">充值中心</view>
+				<view class="function-desc">选择活动档位，立即充值到账</view>
+			</view>
+			<view class="function-arrow">></view>
+		</view>
+		<view class="function-item last" bindtap="showAbout">
+			<view>
+				<view class="function-title">关于</view>
+				<view class="function-desc">了解当前用户端能力与使用说明</view>
+			</view>
+			<view class="function-arrow">></view>
+		</view>
+	</view>
+
+	<view wx:if="{{showProfileEditor}}" class="profile-editor-mask" bindtap="closeProfileEditor">
+		<view class="profile-editor-panel" catchtap="noop">
+			<view class="profile-editor-title">编辑资料</view>
+			<view class="profile-editor-field">
+				<view class="profile-editor-label">头像</view>
+				<button class="profile-editor-avatar-btn" open-type="chooseAvatar" bindchooseavatar="handleChooseAvatar">
+					<image wx:if="{{profileDraftAvatar}}" class="profile-editor-avatar-image" src="{{profileDraftAvatar}}" mode="aspectFill"></image>
+					<view wx:else class="profile-editor-avatar-placeholder">选择头像</view>
+				</button>
+			</view>
+			<view class="profile-editor-field">
+				<view class="profile-editor-label">用户名</view>
+				<input
+					class="profile-editor-input"
+					maxlength="20"
+					placeholder="请输入用户名"
+					value="{{profileDraftNickname}}"
+					bindinput="handleProfileNicknameInput"
+				/>
+			</view>
+			<view class="profile-editor-tip">用户名会展示给商家和后台，用于识别用户。</view>
+			<view class="profile-editor-actions">
+				<button class="profile-editor-btn secondary" bindtap="closeProfileEditor">取消</button>
+				<button class="profile-editor-btn primary" bindtap="saveProfile">保存</button>
+			</view>
+		</view>
+	</view>
+
+	<bottom-nav active="mine"></bottom-nav>
+</view>

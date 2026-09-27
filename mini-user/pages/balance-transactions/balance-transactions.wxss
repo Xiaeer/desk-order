@@ -1,0 +1,64 @@
+.balance-page {
+	padding: 24rpx;
+}
+
+.balance-header {
+	padding: 26rpx;
+	margin-bottom: 20rpx;
+	background: linear-gradient(145deg, #fff6ed, #ffffff 72%);
+}
+
+.balance-title {
+	font-size: 36rpx;
+	font-weight: 700;
+	color: #101828;
+}
+
+.balance-desc {
+	margin-top: 10rpx;
+	font-size: 24rpx;
+	line-height: 1.6;
+	color: #8b8f9c;
+}
+
+.tx-card {
+	padding: 22rpx;
+	margin-bottom: 18rpx;
+}
+
+.tx-top {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.tx-remark {
+	font-size: 30rpx;
+	font-weight: 700;
+	color: #101828;
+}
+
+.tx-amount {
+	font-size: 30rpx;
+	font-weight: 700;
+}
+
+.tx-amount.plus {
+	color: #16a34a;
+}
+
+.tx-amount.minus {
+	color: #ff7a2d;
+}
+
+.tx-line {
+	margin-top: 10rpx;
+	font-size: 24rpx;
+	color: #8b8f9c;
+}
+
+.empty {
+	padding: 60rpx 24rpx;
+	text-align: center;
+	color: #8b8f9c;
+}

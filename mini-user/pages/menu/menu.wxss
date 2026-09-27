@@ -1,0 +1,302 @@
+.menu-page {
+	height: 100vh;
+	padding-bottom: 140rpx;
+	box-sizing: border-box;
+}
+
+.menu-layout {
+	display: flex;
+	height: 100%;
+}
+
+.category-panel {
+	width: 200rpx;
+	height: 100%;
+	background: #f1f3f6;
+}
+
+.category-item {
+	padding: 28rpx 20rpx;
+	font-size: 26rpx;
+	color: #667085;
+}
+
+.category-item.active {
+	background: #ffffff;
+	color: #111827;
+	font-weight: 600;
+	border-left: 6rpx solid #ff6a3d;
+}
+
+.product-panel {
+	flex: 1;
+	height: 100%;
+	padding: 24rpx;
+	box-sizing: border-box;
+}
+
+.shop-title {
+	margin-bottom: 20rpx;
+	font-size: 34rpx;
+	font-weight: 700;
+}
+
+.shop-subtitle {
+	margin-bottom: 18rpx;
+	font-size: 24rpx;
+	line-height: 1.6;
+	color: #98a2b3;
+}
+
+.shop-title-row {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 16rpx;
+	margin-bottom: 20rpx;
+}
+
+.table-badge {
+	padding: 10rpx 18rpx;
+	border-radius: 999rpx;
+	background: #fff1e8;
+	color: #ff6a3d;
+	font-size: 24rpx;
+	font-weight: 600;
+	flex-shrink: 0;
+}
+
+.product-card {
+	display: flex;
+	padding: 20rpx;
+	margin-bottom: 18rpx;
+}
+
+.product-image {
+	width: 150rpx;
+	height: 150rpx;
+	border-radius: 20rpx;
+	background: #f5f5f5;
+	flex-shrink: 0;
+}
+
+.placeholder {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color: #ff6a3d;
+}
+
+.product-content {
+	flex: 1;
+	margin-left: 18rpx;
+}
+
+.product-name {
+	font-size: 30rpx;
+	font-weight: 600;
+	color: #111827;
+}
+
+.product-desc {
+	margin-top: 10rpx;
+	font-size: 24rpx;
+	color: #8b8f9c;
+	min-height: 68rpx;
+	display: -webkit-box;
+	-webkit-line-clamp: 2;
+	-webkit-box-orient: vertical;
+	overflow: hidden;
+}
+
+.product-option-tip {
+	margin-top: 10rpx;
+	font-size: 22rpx;
+	line-height: 1.5;
+	color: #ff8a33;
+}
+
+.product-footer {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	margin-top: 16rpx;
+}
+
+.product-price {
+	color: #ff6a3d;
+	font-size: 30rpx;
+	font-weight: 700;
+}
+
+.stepper {
+	display: flex;
+	align-items: center;
+}
+
+.step-btn {
+	width: 48rpx;
+	height: 48rpx;
+	line-height: 48rpx;
+	text-align: center;
+	border-radius: 50%;
+	background: #eef1f5;
+	color: #4b5563;
+}
+
+.step-btn.active {
+	background: #ff6a3d;
+	color: #ffffff;
+}
+
+.step-count {
+	min-width: 48rpx;
+	text-align: center;
+	font-size: 24rpx;
+}
+
+.option-picker-btn {
+	padding: 14rpx 24rpx;
+	border-radius: 999rpx;
+	background: #fff1e8;
+	color: #ff6a3d;
+	font-size: 24rpx;
+	font-weight: 600;
+}
+
+.menu-loading,
+.empty {
+	margin: 24rpx;
+	padding: 40rpx 24rpx;
+	text-align: center;
+	color: #8b8f9c;
+}
+
+.option-mask {
+	position: fixed;
+	inset: 0;
+	display: flex;
+	align-items: flex-end;
+	justify-content: center;
+	padding: 24rpx;
+	background: rgba(17, 24, 39, 0.55);
+	z-index: 20;
+}
+
+.option-dialog {
+	width: 100%;
+	max-height: 80vh;
+	overflow-y: auto;
+	padding: 28rpx;
+	border-radius: 28rpx;
+	background: #ffffff;
+}
+
+.option-dialog-head {
+	align-items: center;
+}
+
+.option-dialog-title {
+	font-size: 30rpx;
+	font-weight: 700;
+	color: #101828;
+}
+
+.option-dialog-close {
+	font-size: 24rpx;
+	color: #98a2b3;
+}
+
+.option-product-name {
+	margin-top: 18rpx;
+	font-size: 34rpx;
+	font-weight: 700;
+	color: #111827;
+}
+
+.option-product-desc {
+	margin-top: 10rpx;
+	font-size: 24rpx;
+	line-height: 1.6;
+	color: #8b8f9c;
+}
+
+.option-group {
+	margin-top: 24rpx;
+	padding-top: 24rpx;
+	border-top: 1rpx solid #f2f4f7;
+}
+
+.option-group-title {
+	font-size: 28rpx;
+	font-weight: 700;
+	color: #101828;
+}
+
+.option-group-helper {
+	margin-top: 8rpx;
+	font-size: 22rpx;
+	color: #98a2b3;
+}
+
+.option-value-list {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 14rpx;
+	margin-top: 16rpx;
+}
+
+.option-value-chip {
+	display: flex;
+	align-items: center;
+	gap: 8rpx;
+	padding: 16rpx 22rpx;
+	border-radius: 999rpx;
+	background: #f8fafc;
+	border: 2rpx solid transparent;
+	font-size: 24rpx;
+	color: #475467;
+}
+
+.option-value-chip.active {
+	background: #fff6ef;
+	border-color: #ff8a33;
+	color: #ff7a2d;
+	font-weight: 600;
+}
+
+.option-value-price {
+	font-size: 22rpx;
+	color: #ff7a2d;
+}
+
+.option-summary-preview {
+	margin-top: 22rpx;
+	font-size: 24rpx;
+	line-height: 1.6;
+	color: #667085;
+}
+
+.option-submit-bar {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 20rpx;
+	margin-top: 28rpx;
+	padding-top: 20rpx;
+	border-top: 1rpx solid #f2f4f7;
+}
+
+.option-submit-price {
+	margin-top: 6rpx;
+	font-size: 34rpx;
+	font-weight: 700;
+	color: #111827;
+}
+
+.option-submit-btn {
+	margin: 0;
+	border: none;
+	border-radius: 999rpx;
+	min-width: 220rpx;
+}

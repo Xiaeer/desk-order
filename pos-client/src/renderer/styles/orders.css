@@ -1,0 +1,107 @@
+.order-card {
+	padding: 18px;
+	border-radius: 20px;
+	background: linear-gradient(180deg, rgba(255, 253, 248, 0.96) 0%, rgba(245, 238, 224, 0.96) 100%);
+	border: 1px solid rgba(128, 106, 72, 0.14);
+	box-shadow: 0 12px 28px rgba(90, 68, 38, 0.08);
+	display: grid;
+	gap: 14px;
+}
+
+.order-head,
+.order-footer,
+.item-list li {
+	display: flex;
+	justify-content: space-between;
+	gap: 12px;
+}
+
+.order-no {
+	font-size: 20px;
+	font-weight: 800;
+	letter-spacing: 0.02em;
+}
+
+.order-meta,
+.remark-text,
+.badge {
+	font-size: 13px;
+	color: var(--muted);
+}
+
+.order-side {
+	text-align: right;
+	display: grid;
+	gap: 6px;
+}
+
+.order-total {
+	font-size: 22px;
+	font-weight: 800;
+	color: var(--accent-dark);
+}
+
+.badge {
+	padding: 4px 10px;
+	background: #f2e7d8;
+	border-radius: 999px;
+	justify-self: end;
+	font-weight: 700;
+}
+
+.item-list {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	display: grid;
+	gap: 8px;
+}
+
+.item-list li {
+	padding: 10px 0;
+	border-bottom: 1px dashed rgba(128, 106, 72, 0.25);
+	font-size: 14px;
+}
+
+.item-list li span:first-child {
+	flex: 1;
+	font-weight: 600;
+}
+
+.item-main {
+	flex: 1;
+	display: grid;
+	gap: 4px;
+}
+
+.item-name {
+	font-weight: 700;
+}
+
+.item-option {
+	font-size: 12px;
+	color: var(--muted);
+	line-height: 1.5;
+}
+
+.item-qty,
+.item-amount {
+	white-space: nowrap;
+}
+
+.order-footer {
+	align-items: flex-start;
+	flex-wrap: wrap;
+}
+
+.remark-block {
+	flex: 1;
+	min-width: 220px;
+}
+
+.order-actions {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: flex-end;
+	gap: 8px;
+}

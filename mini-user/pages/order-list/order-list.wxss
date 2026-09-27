@@ -1,0 +1,91 @@
+.order-page {
+	padding: 24rpx;
+}
+
+.order-header {
+	padding: 28rpx;
+	background: linear-gradient(145deg, #fff6ed, #ffffff 72%);
+	margin-bottom: 20rpx;
+}
+
+.order-eyebrow {
+	font-size: 22rpx;
+	font-weight: 600;
+	color: #ff7a2d;
+}
+
+.order-title {
+	margin-top: 12rpx;
+	font-size: 36rpx;
+	font-weight: 700;
+	color: #101828;
+}
+
+.order-desc {
+	margin-top: 10rpx;
+	font-size: 24rpx;
+	line-height: 1.6;
+	color: #8b8f9c;
+}
+
+.filter-row {
+	display: flex;
+	gap: 16rpx;
+	margin-bottom: 20rpx;
+	overflow-x: auto;
+	white-space: nowrap;
+}
+
+.filter-chip {
+	padding: 14rpx 24rpx;
+	border-radius: 999rpx;
+	background: #ffffff;
+	font-size: 24rpx;
+	font-weight: 600;
+	color: #8b8f9c;
+}
+
+.filter-chip.active {
+	background: linear-gradient(135deg, #ff8a33, #ff6a3d);
+	color: #ffffff;
+}
+
+.order-card {
+	padding: 22rpx;
+	margin-bottom: 20rpx;
+}
+
+.order-top,
+.order-bottom {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.order-shop {
+	font-size: 30rpx;
+	font-weight: 600;
+}
+
+.order-status,
+.order-link,
+.order-amount {
+	color: #ff6a3d;
+}
+
+.order-no,
+.order-time {
+	margin-top: 10rpx;
+	font-size: 24rpx;
+	color: #8b8f9c;
+}
+
+.order-bottom {
+	margin-top: 18rpx;
+}
+
+.empty {
+	padding: 60rpx 24rpx;
+	text-align: center;
+	color: #8b8f9c;
+}

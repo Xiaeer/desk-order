@@ -1,0 +1,26 @@
+{
+  "name": "deskorder-pos",
+  "version": "0.1.0",
+  "private": true,
+  "author": "DeskOrder",
+  "description": "DeskOrder POS client for Windows 7 receipt printing",
+  "main": "build/main/index.js",
+  "scripts": {
+    "build:main": "tsc -p tsconfig.main.json",
+    "build:renderer": "tsc -p tsconfig.renderer.json",
+    "start": "npm run build:main && npm run build:renderer && electron .",
+    "pack": "npm run build:main && npm run build:renderer && electron-builder --config electron-builder.json --dir",
+    "pack:x64": "npm run build:main && npm run build:renderer && electron-builder --config electron-builder.json --dir --win --x64",
+    "pack:ia32": "npm run build:main && npm run build:renderer && electron-builder --config electron-builder.json --dir --win --ia32",
+    "dist:x64": "npm run build:main && npm run build:renderer && electron-builder --config electron-builder.json --win portable --x64",
+    "dist:ia32": "npm run build:main && npm run build:renderer && electron-builder --config electron-builder.json --win portable --ia32"
+  },
+  "devDependencies": {
+    "typescript": "5.8.3",
+    "electron": "22.3.27",
+    "electron-builder": "24.13.3"
+  },
+  "dependencies": {
+    "qrcode": "1.5.4"
+  }
+}

@@ -1,0 +1,38 @@
+<view class="page page-with-bottom-nav order-page">
+	<view class="order-header card">
+		<view class="order-eyebrow">订单中心</view>
+		<view class="order-title">最近订单与支付进度</view>
+		<view class="order-desc">查看待支付、进行中和已完成订单。</view>
+	</view>
+
+	<view class="filter-row">
+		<view
+			wx:for="{{filters}}"
+			wx:key="key"
+			class="filter-chip {{activeFilter === item.key ? 'active' : ''}}"
+			data-key="{{item.key}}"
+			bindtap="switchFilter"
+		>
+			{{item.label}}
+		</view>
+	</view>
+
+	<view wx:if="{{loading}}" class="empty card">订单加载中...</view>
+	<view wx:elif="{{filteredList.length}}" class="order-list">
+		<view class="order-card card" wx:for="{{filteredList}}" wx:key="id" data-id="{{item.id}}" bindtap="openDetail">
+			<view class="order-top">
+				<view class="order-shop">{{item.shop_name}}</view>
+				<view class="order-status">{{item.status_text}}</view>
+			</view>
+			<view class="order-no">订单号：{{item.order_no}}</view>
+			<view class="order-time">下单时间：{{item.created_at_text}}</view>
+			<view class="order-bottom">
+				<view class="order-amount">¥{{item.total_amount_text}}</view>
+				<view class="order-link">查看详情</view>
+			</view>
+		</view>
+	</view>
+	<view wx:else class="empty card">当前筛选下没有订单，去首页逛逛附近门店吧。</view>
+
+	<bottom-nav active="orders"></bottom-nav>
+</view>

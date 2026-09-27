@@ -1,0 +1,56 @@
+.page-title {
+  font-size: 40rpx;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 40rpx;
+}
+
+.section-title {
+  font-size: 30rpx;
+  font-weight: bold;
+  color: #07c160;
+  margin-bottom: 16rpx;
+}
+
+.location-box {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.location-wrapper {
+  flex: 1;
+}
+
+.located-text {
+  font-size: 24rpx;
+  color: #07c160;
+}
+
+.unlocated-text {
+  font-size: 24rpx;
+  color: #999;
+}
+
+.loc-btn {
+  font-size: 24rpx;
+  color: #fff;
+  background: #07c160;
+  padding: 8rpx 24rpx;
+  border-radius: 24rpx;
+}
+
+.location-tip {
+  display: block;
+  margin-top: 12rpx;
+  font-size: 22rpx;
+  line-height: 1.5;
+  color: #b26a00;
+}
+
+.form-textarea {
+  flex: 1;
+  font-size: 28rpx;
+  min-height: 80rpx;
+}

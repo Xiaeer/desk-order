@@ -1,0 +1,33 @@
+.container {
+  padding: 30rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.card {
+  width: 100%;
+  max-width: 640rpx;
+  background: #fff;
+  padding: 40rpx;
+  border-radius: 12rpx;
+  box-shadow: 0 2rpx 8rpx rgba(0,0,0,0.06);
+  text-align: center;
+}
+.icon {
+  font-size: 80rpx;
+  margin-bottom: 20rpx;
+}
+.title {
+  font-size: 32rpx;
+  font-weight: 600;
+  margin-bottom: 12rpx;
+}
+.desc {
+  color: #666;
+  font-size: 24rpx;
+}
+.btn {
+  margin-top: 24rpx;
+  width: 80%;
+  max-width: 480rpx;
+}

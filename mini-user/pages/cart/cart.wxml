@@ -1,0 +1,41 @@
+<view class="page cart-page">
+	<view wx:if="{{items.length}}">
+		<view class="cart-header card">
+			<view>
+				<view class="cart-shop">{{shopName}}</view>
+				<view class="text-muted">已选 {{totalCount}} 件商品</view>
+			</view>
+			<view class="cart-clear" bindtap="clearCart">清空</view>
+		</view>
+
+		<view class="cart-tip">确认无误后直接去结算，修改数量后会实时更新金额。</view>
+
+		<view class="cart-list">
+			<view class="cart-item card" wx:for="{{items}}" wx:key="cart_item_key">
+				<view class="cart-info">
+					<view class="cart-name">{{item.name}}</view>
+					<view wx:if="{{item.option_summary}}" class="text-muted">{{item.option_summary}}</view>
+					<view class="cart-price">¥{{item.price_text}}</view>
+				</view>
+				<view class="cart-bottom">
+					<view class="cart-subtotal">小计 ¥{{item.subtotal_text}}</view>
+					<view class="stepper">
+						<view class="step-btn" data-item="{{item}}" bindtap="decrease">-</view>
+						<view class="step-count">{{item.quantity}}</view>
+						<view class="step-btn active" data-item="{{item}}" bindtap="increase">+</view>
+					</view>
+				</view>
+			</view>
+		</view>
+
+		<view class="cart-submit">
+			<view>
+				<view class="submit-label">合计</view>
+				<view class="submit-amount">¥{{totalAmountText}}</view>
+			</view>
+			<button class="btn-primary submit-btn" bindtap="goConfirm">去结算</button>
+		</view>
+	</view>
+
+	<view wx:else class="empty card">购物车还是空的，先去选点商品吧。</view>
+</view>

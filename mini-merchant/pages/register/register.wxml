@@ -1,0 +1,45 @@
+<view class="container">
+  <view class="page-title">商家入驻</view>
+
+  <view class="card">
+    <view class="section-title">个人信息</view>
+    <view class="form-item">
+      <text class="form-label">姓名</text>
+      <input class="form-input" placeholder="请输入姓名" value="{{name}}" bindinput="onInputName" />
+    </view>
+    <view class="form-item">
+      <text class="form-label">手机号</text>
+      <input class="form-input" type="number" placeholder="请输入手机号" value="{{phone}}" bindinput="onInputPhone" />
+    </view>
+  </view>
+
+  <view class="card">
+    <view class="section-title">店铺信息</view>
+    <view class="form-item">
+      <text class="form-label">店铺名称</text>
+      <input class="form-input" placeholder="请输入店铺名称" value="{{shopName}}" bindinput="onInputShopName" />
+    </view>
+    <view class="form-item">
+      <text class="form-label">地址</text>
+      <input class="form-input" placeholder="请输入详细地址" value="{{address}}" bindinput="onInputAddress" />
+    </view>
+    <view class="form-item">
+      <text class="form-label">定位</text>
+      <view class="location-wrapper">
+        <view class="location-box">
+          <text wx:if="{{located}}" class="located-text">已定位 ({{latitude}}, {{longitude}})</text>
+          <text wx:elif="{{locationDenied}}" class="unlocated-text">未开启定位权限</text>
+          <text wx:else class="unlocated-text">未定位</text>
+          <view class="loc-btn" bindtap="getLocation">{{locationDenied ? '去授权' : '获取位置'}}</view>
+        </view>
+        <text wx:if="{{locationDenied}}" class="location-tip">请开启位置信息权限后重新获取坐标。</text>
+      </view>
+    </view>
+    <view class="form-item">
+      <text class="form-label">描述</text>
+      <textarea class="form-textarea" placeholder="店铺描述（可选）" value="{{description}}" bindinput="onInputDesc" auto-height />
+    </view>
+  </view>
+
+  <button class="btn-primary" loading="{{loading}}" bindtap="handleSubmit">提交入驻申请</button>
+</view>

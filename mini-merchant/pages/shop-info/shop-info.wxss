@@ -1,0 +1,94 @@
+.status-card {
+  padding: 30rpx;
+}
+
+.status-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16rpx 0;
+}
+
+.status-label {
+  font-size: 28rpx;
+  color: #666;
+}
+
+.open-toggle {
+  display: flex;
+  align-items: center;
+  gap: 12rpx;
+  padding: 12rpx 24rpx;
+  background: #f5f5f5;
+  border-radius: 30rpx;
+}
+
+.toggle-dot {
+  width: 20rpx;
+  height: 20rpx;
+  border-radius: 50%;
+}
+
+.toggle-dot.on { background: #07c160; }
+.toggle-dot.off { background: #ccc; }
+
+.toggle-text {
+  font-size: 24rpx;
+  color: #333;
+}
+
+.card-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 16rpx;
+  gap: 20rpx;
+}
+
+.section-title {
+  font-size: 30rpx;
+  font-weight: bold;
+  color: #333;
+  flex: 1;
+}
+
+.edit-btn {
+  font-size: 26rpx;
+  color: #07c160;
+  padding: 8rpx 24rpx;
+}
+
+.cancel-btn {
+  font-size: 26rpx;
+  color: #999;
+  padding: 8rpx 24rpx;
+}
+
+.audit-tip {
+  margin-bottom: 20rpx;
+  padding: 20rpx 24rpx;
+  border-radius: 16rpx;
+  background: #fff7e6;
+  color: #b26a00;
+  font-size: 24rpx;
+  line-height: 1.6;
+}
+
+.form-value {
+  flex: 1;
+  font-size: 28rpx;
+  color: #333;
+}
+
+.action-card {
+  margin-top: 24rpx;
+}
+
+.action-row {
+  display: flex;
+  align-items: center;
+}
+
+.action-tip {
+  margin-top: 12rpx;
+  margin-bottom: 0;
+}

@@ -1,0 +1,29 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/mine/mine",
+    "pages/recharge/recharge",
+    "pages/refund-center/refund-center",
+    "pages/balance-transactions/balance-transactions",
+    "pages/order-list/order-list",
+    "pages/shop-select/shop-select",
+    "pages/menu/menu",
+    "pages/cart/cart",
+    "pages/order-confirm/order-confirm",
+    "pages/order-detail/order-detail"
+  ],
+  "window": {
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "DeskOrder",
+    "navigationBarBackgroundColor": "#ffffff"
+  },
+  "permission": {
+    "scope.userLocation": {
+      "desc": "用于获取附近店铺并展示距离"
+    }
+  },
+  "style": "v2",
+  "componentFramework": "glass-easel",
+  "sitemapLocation": "sitemap.json",
+  "lazyCodeLoading": "requiredComponents"
+}

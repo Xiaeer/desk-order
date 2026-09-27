@@ -1,0 +1,23 @@
+.page {
+	min-height: 100vh;
+	background: #f6f7fb;
+}
+
+.page-with-bottom-nav {
+	padding-bottom: 180rpx;
+}
+
+.card {
+	background: #ffffff;
+	border-radius: 24rpx;
+	box-shadow: 0 12rpx 36rpx rgba(15, 23, 42, 0.06);
+}
+
+.btn-primary {
+	background: linear-gradient(135deg, #ff6a3d, #ff914d);
+	color: #ffffff;
+}
+
+.text-muted {
+	color: #8b8f9c;
+}

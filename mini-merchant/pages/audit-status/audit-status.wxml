@@ -1,0 +1,17 @@
+<view class="container">
+  <view class="card">
+    <view class="icon">{{status === 1 ? '✅' : (status === 0 ? '⏳' : '❌')}}</view>
+    <view class="title">
+      <text wx:if="{{status === 1}}">审核通过</text>
+      <text wx:elif="{{status === 0}}">正在审核</text>
+      <text wx:elif="{{status === 2}}">审核未通过</text>
+    </view>
+    <view class="desc">
+      <text wx:if="{{status === 1}}">店铺已通过审核，正在进入首页…</text>
+      <text wx:elif="{{status === 0}}">您的店铺正在审核中，请耐心等待。</text>
+      <text wx:elif="{{status === 2}}">抱歉，您的店铺未通过审核。如需重新申请，请点击下面按钮。</text>
+    </view>
+  </view>
+
+  <button wx:if="{{status === 2}}" class="btn" bindtap="reapply">重新申请</button>
+</view>

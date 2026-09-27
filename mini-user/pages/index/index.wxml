@@ -1,0 +1,56 @@
+<view class="page page-with-bottom-nav home-page">
+	<view class="hero-panel">
+		<view class="hero-glow hero-glow-a"></view>
+		<view class="hero-glow hero-glow-b"></view>
+		<view class="hero-copy">
+			<view class="hero-badge">{{brandName}}</view>
+			<view class="hero-title">今晚想吃点什么？</view>
+			<view class="hero-desc">自动匹配附近营业门店，进店即点，支付也更顺手。</view>
+			<view class="hero-location {{hasLocation ? 'ready' : ''}}">{{locationText}}</view>
+		</view>
+	</view>
+
+	<view class="store-card card">
+		<view class="store-card-top">
+			<view>
+				<view class="store-caption">当前门店</view>
+				<view class="store-name">{{currentShop.name || '附近门店待匹配'}}</view>
+			</view>
+			<view class="store-switch" bindtap="goShopSelect">切换门店</view>
+		</view>
+		<view class="store-meta">
+			<text>{{currentShop.distance_text || '--'}}km</text>
+			<text>{{currentShop.state_text || '待定位'}}</text>
+		</view>
+		<view class="store-address">{{currentShop.address_text || '获取定位后可展示附近可用门店'}}</view>
+		<button class="btn-primary store-btn" bindtap="goCurrentShop" loading="{{startingOrder}}" disabled="{{startingOrder}}">点单</button>
+	</view>
+
+	<view class="promo-card card" bindtap="goRecharge">
+		<view>
+			<view class="promo-title">{{featuredActivityTitle}}</view>
+			<view class="promo-desc">{{featuredActivityDesc}}</view>
+		</view>
+		<view class="promo-tag">去看看</view>
+	</view>
+
+	<view class="quick-grid">
+		<view class="quick-card card" bindtap="goStartOrder">
+			<view class="quick-icon warm">点</view>
+			<view class="quick-title">开始点餐</view>
+			<view class="quick-desc">优先进入最近门店</view>
+		</view>
+		<view class="quick-card card" bindtap="goRecharge">
+			<view class="quick-icon sky">储</view>
+			<view class="quick-title">余额充值</view>
+			<view class="quick-desc">领取平台储值优惠</view>
+		</view>
+	</view>
+
+	<view class="home-secondary-links">
+		<view class="secondary-link" bindtap="goShopSelect">附近门店</view>
+		<view class="secondary-link" bindtap="goOrders">订单中心</view>
+	</view>
+
+	<bottom-nav active="home"></bottom-nav>
+</view>

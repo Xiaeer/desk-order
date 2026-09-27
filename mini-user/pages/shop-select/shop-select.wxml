@@ -1,0 +1,45 @@
+<view class="page shop-page">
+	<view class="toolbar card">
+		<view class="toolbar-title">500 米内营业店铺</view>
+		<button size="mini" plain bindtap="refreshLocation">重新定位</button>
+	</view>
+
+	<view wx:if="{{showLocationDebug && locationReady}}" class="location-debug card">
+		<view class="location-debug-title">定位调试</view>
+		<view class="location-debug-row">
+			<text class="location-debug-label">纬度</text>
+			<text class="location-debug-value">{{latitudeText}}</text>
+		</view>
+		<view class="location-debug-row">
+			<text class="location-debug-label">经度</text>
+			<text class="location-debug-value">{{longitudeText}}</text>
+		</view>
+		<view class="location-debug-row">
+			<text class="location-debug-label">坐标系</text>
+			<text class="location-debug-value">{{coordinateTypeText}}</text>
+		</view>
+		<view class="location-debug-row">
+			<text class="location-debug-label">定位精度</text>
+			<text class="location-debug-value">{{accuracyText}}</text>
+		</view>
+	</view>
+
+	<view wx:if="{{loading}}" class="empty card">正在加载附近店铺...</view>
+
+	<view wx:elif="{{shops.length}}" class="shop-list">
+		<view class="shop-card card" wx:for="{{shops}}" wx:key="id" data-shop="{{item}}" bindtap="chooseShop">
+			<image wx:if="{{item.logo}}" class="shop-logo" src="{{item.logo}}" mode="aspectFill"></image>
+			<view wx:else class="shop-logo shop-logo-placeholder">店</view>
+			<view class="shop-content">
+				<view class="shop-row">
+					<view class="shop-name">{{item.name}}</view>
+					<view class="shop-distance">{{item.distance_text}} km</view>
+				</view>
+				<view class="shop-desc">{{item.description || '暂无店铺介绍'}}</view>
+				<view class="shop-address">{{item.address}}</view>
+			</view>
+		</view>
+	</view>
+
+	<view wx:else class="empty card">500 米内暂未找到营业中的店铺，请靠近门店后重试。</view>
+</view>

@@ -1,0 +1,10 @@
+<view class="cart-bar">
+	<view class="cart-info" bindtap="handleCartTap">
+		<view class="cart-count">{{count}}</view>
+		<view>
+			<view class="cart-label">{{labelText}}</view>
+			<view class="cart-amount">合计 ¥{{amountText}}</view>
+		</view>
+	</view>
+	<button class="btn-primary checkout-btn" bindtap="handleCheckoutTap" disabled="{{!count}}">{{checkoutText}}</button>
+</view>

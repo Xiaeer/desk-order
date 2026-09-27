@@ -1,0 +1,26 @@
+<view class="container">
+  <view class="card security-card">
+    <view class="section-title">设置 / 重置 H5 登录密码</view>
+    <view class="desc">
+      老商户迁移到 merchant-h5 时，请先在这里设置密码。小程序内已完成商户身份校验，因此这里重置 H5 密码时不要求填写旧密码。
+    </view>
+
+    <view class="form-item">
+      <text class="form-label">新密码</text>
+      <input class="form-input" password value="{{newPassword}}" bindinput="onInputNewPassword" placeholder="至少 6 位" />
+    </view>
+
+    <view class="form-item">
+      <text class="form-label">确认新密码</text>
+      <input class="form-input" password value="{{confirmPassword}}" bindinput="onInputConfirmPassword" placeholder="请再次输入新密码" />
+    </view>
+
+    <view class="tips">
+      <text>1. 未设置过密码的老商户，直接填写新密码即可完成迁移。</text>
+      <text>2. 如果之前设置过密码，这里也可以直接重置，不需要旧密码。</text>
+      <text>3. 设置成功后，可在 merchant-h5 使用手机号 + 密码登录。</text>
+    </view>
+
+    <button class="btn-primary" loading="{{loading}}" bindtap="handleSubmit">保存密码</button>
+  </view>
+</view>

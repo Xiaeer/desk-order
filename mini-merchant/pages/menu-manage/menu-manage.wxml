@@ -1,0 +1,59 @@
+<view class="menu-page">
+  <view class="menu-layout">
+    <!-- 左侧分类 -->
+    <scroll-view class="cat-sidebar" scroll-y>
+      <view class="cat-item {{activeCategory === index ? 'active' : ''}}" 
+        wx:for="{{categories}}" wx:key="id" 
+        data-index="{{index}}" bindtap="switchCategory"
+        bindlongpress="editCategory" data-index="{{index}}">
+        <text>{{item.name}}</text>
+      </view>
+      <view class="cat-item add-cat" bindtap="showAddCategory">
+        <text>+ 添加</text>
+      </view>
+    </scroll-view>
+
+    <!-- 右侧商品 -->
+    <scroll-view class="product-list" scroll-y>
+      <view class="product-header">
+        <text class="cat-title">{{categories[activeCategory].name || '请选择分类'}}</text>
+        <view class="header-actions">
+          <text class="action-btn del" wx:if="{{categories[activeCategory]}}" 
+            bindtap="deleteCategory" data-index="{{activeCategory}}">删除分类</text>
+        </view>
+      </view>
+
+      <block wx:if="{{products.length > 0}}">
+        <view class="product-card" wx:for="{{products}}" wx:key="id">
+          <image class="product-img" src="{{item.image || '/pages/login/logo.png'}}" mode="aspectFill" />
+          <view class="product-info">
+            <text class="product-name">{{item.name}}</text>
+            <text class="product-price">¥{{item.price / 100}}</text>
+            <text class="product-status">{{item.is_on_sale ? '在售' : '已下架'}}</text>
+          </view>
+          <view class="product-actions">
+            <view class="small-btn" bindtap="editProduct" data-id="{{item.id}}">编辑</view>
+            <view class="small-btn warn" bindtap="deleteProduct" data-id="{{item.id}}">删除</view>
+          </view>
+        </view>
+      </block>
+      <view wx:else class="empty-tip">暂无商品，点击下方按钮添加</view>
+
+      <view class="add-product-btn" bindtap="addProduct">
+        <text>+ 添加商品</text>
+      </view>
+    </scroll-view>
+  </view>
+
+  <!-- 分类弹窗 -->
+  <view class="modal-mask" wx:if="{{showCatModal}}" bindtap="cancelCatModal">
+    <view class="modal-content" catchtap>
+      <text class="modal-title">{{editCatId ? '编辑分类' : '新增分类'}}</text>
+      <input class="modal-input" placeholder="分类名称" value="{{catName}}" bindinput="onCatNameInput" focus />
+      <view class="modal-btns">
+        <view class="modal-btn cancel" bindtap="cancelCatModal">取消</view>
+        <view class="modal-btn confirm" bindtap="saveCat">保存</view>
+      </view>
+    </view>
+  </view>
+</view>

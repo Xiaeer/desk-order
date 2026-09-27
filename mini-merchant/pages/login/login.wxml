@@ -1,0 +1,14 @@
+<view class="login-page">
+  <view class="login-header">
+    <image class="logo" src="/pages/login/logo.png" mode="aspectFit" />
+    <text class="title">DeskOrder 商家版</text>
+    <text class="subtitle">桌面点餐系统 · 商家管理端</text>
+  </view>
+
+  <view class="login-body">
+    <button class="login-btn" type="primary" loading="{{loading}}" bindtap="handleLogin">
+      微信一键登录
+    </button>
+    <text class="login-tip">登录即表示同意《DeskOrder服务协议》</text>
+  </view>
+</view>

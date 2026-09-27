@@ -1,0 +1,53 @@
+{
+  "pages": [
+    "pages/launch/launch",
+    "pages/home/home",
+    "pages/order-list/order-list",
+    "pages/menu-manage/menu-manage",
+    "pages/shop-info/shop-info",
+    "pages/audit-status/audit-status",
+    "pages/login/login",
+    "pages/register/register",
+    "pages/account-security/account-security",
+    "pages/product-edit/product-edit",
+    "pages/order-detail/order-detail"
+  ],
+  "tabBar": {
+    "color": "#999",
+    "selectedColor": "#07c160",
+    "backgroundColor": "#fff",
+    "borderStyle": "black",
+    "list": [
+      {
+        "pagePath": "pages/home/home",
+        "text": "首页"
+      },
+      {
+        "pagePath": "pages/order-list/order-list",
+        "text": "订单"
+      },
+      {
+        "pagePath": "pages/menu-manage/menu-manage",
+        "text": "菜单"
+      },
+      {
+        "pagePath": "pages/shop-info/shop-info",
+        "text": "店铺"
+      }
+    ]
+  },
+  "window": {
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "DeskOrder 商家版",
+    "navigationBarBackgroundColor": "#ffffff"
+  },
+  "permission": {
+    "scope.userLocation": {
+      "desc": "用于获取店铺坐标，提交商家入驻申请"
+    }
+  },
+  "style": "v2",
+  "componentFramework": "glass-easel",
+  "sitemapLocation": "sitemap.json",
+  "lazyCodeLoading": "requiredComponents"
+}

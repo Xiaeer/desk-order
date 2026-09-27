@@ -1,0 +1,10 @@
+{
+  "description": "Local WeChat DevTools settings; copy as project.private.config.json",
+  "projectname": "mini-merchant",
+  "appid": "replace-with-your-appid",
+  "setting": {
+    "urlCheck": false,
+    "compileHotReLoad": true
+  },
+  "condition": {}
+}

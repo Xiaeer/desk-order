@@ -1,0 +1,45 @@
+.security-card {
+  padding: 30rpx;
+}
+
+.section-title {
+  font-size: 34rpx;
+  font-weight: bold;
+  color: #333;
+}
+
+.desc {
+  margin-top: 16rpx;
+  font-size: 24rpx;
+  line-height: 1.7;
+  color: #666;
+}
+
+.form-item {
+  margin-top: 24rpx;
+}
+
+.form-label {
+  display: block;
+  margin-bottom: 12rpx;
+  font-size: 26rpx;
+  color: #555;
+}
+
+.form-input {
+  width: 100%;
+  padding: 20rpx 24rpx;
+  border-radius: 16rpx;
+  background: #f7f8fa;
+  font-size: 28rpx;
+}
+
+.tips {
+  display: flex;
+  flex-direction: column;
+  gap: 10rpx;
+  margin: 28rpx 0;
+  font-size: 24rpx;
+  line-height: 1.6;
+  color: #888;
+}

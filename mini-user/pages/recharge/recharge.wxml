@@ -1,0 +1,120 @@
+<view class="page recharge-page">
+	<view class="balance-card card">
+		<view class="balance-label">当前余额</view>
+		<view class="balance-amount">¥{{balanceText}}</view>
+		<view class="balance-desc">平台统一余额，在接入门店下单时可直接抵扣。</view>
+	</view>
+
+	<view class="section-block">
+		<view class="section-title">选择充值活动</view>
+		<view class="section-desc">活动金额实时到账，赠送金额一并进入余额钱包。</view>
+	</view>
+
+	<view wx:if="{{pendingRechargeOrder}}" class="pending-card card">
+		<view class="pending-title">当前有待支付充值单</view>
+		<view class="pending-line">订单号：{{pendingRechargeOrder.order_no}}</view>
+		<view class="pending-line">活动：{{pendingRechargeOrder.activity_name}}</view>
+		<view class="pending-line">应付 ¥{{pendingRechargeOrder.pay_amount_text}}，到账 ¥{{pendingRechargeOrder.arrival_amount_text}}</view>
+		<view class="pending-tip">你可以继续支付，或先取消当前充值单后重新选择活动档位。</view>
+	</view>
+
+	<view wx:if="{{activities.length}}" class="activity-list">
+		<view class="section-block activity-section">
+			<view class="section-title">选择充值活动</view>
+			<view class="section-desc">活动金额实时到账，赠送金额一并进入余额钱包。</view>
+		</view>
+		<view
+			wx:for="{{activities}}"
+			wx:key="id"
+			class="activity-card card {{selectedActivityId === item.id ? 'active' : ''}}"
+			data-id="{{item.id}}"
+			bindtap="selectActivity"
+		>
+			<view class="activity-main">
+				<view class="activity-name">{{item.name}}</view>
+				<view class="activity-price">充¥{{item.recharge_amount_text}}</view>
+				<view class="activity-gift">送¥{{item.gift_amount_text}}，到账 ¥{{item.arrival_amount_text}}</view>
+			</view>
+			<view class="activity-check {{selectedActivityId === item.id ? 'checked' : ''}}"></view>
+		</view>
+	</view>
+	<view wx:else class="empty empty-state card">
+		<view class="empty-title">当前暂无可用充值活动</view>
+		<view class="empty-desc">活动上线后会在这里展示可充值档位，你也可以稍后再来查看。</view>
+	</view>
+
+	<view wx:if="{{recentRechargeOrders.length}}" class="recent-section">
+		<view class="section-block recent-header">
+			<view>
+				<view class="section-title">最近充值记录</view>
+				<view class="section-desc">这里会展示最近充值单和平台处理中的退款结果。</view>
+			</view>
+			<view wx:if="{{recentRechargeOrders.length > 3}}" class="recent-toggle" bindtap="toggleRecentRechargeOrders">
+				{{recentRechargeOrdersExpanded ? '收起' : '查看更多'}}
+			</view>
+		</view>
+		<view class="recent-list">
+			<view wx:for="{{recentRechargeOrdersVisible}}" wx:key="id" class="recent-card card">
+				<view class="recent-top">
+					<view>
+						<view class="recent-title">{{item.activity_name}}</view>
+						<view class="recent-sub">订单号：{{item.order_no}}</view>
+					</view>
+					<view class="recent-status">{{item.status_text}}</view>
+				</view>
+				<view class="recent-line">充值 ¥{{item.recharge_amount_text}}，赠送 ¥{{item.gift_amount_text}}，到账 ¥{{item.arrival_amount_text}}</view>
+				<view class="recent-line">创建时间：{{item.created_at_text}}</view>
+				<view wx:if="{{item.can_apply_refund}}" class="refund-action-row">
+					<view class="refund-action-text">当前充值仍有可退本金，可直接向平台提交退款申请。</view>
+					<button class="refund-apply-btn" size="mini" loading="{{applyingRefundId === item.id}}" disabled="{{applyingRefundId > 0}}" data-id="{{item.id}}" bindtap="handleApplyRefund">{{item.refund_action_text}}</button>
+				</view>
+				<view wx:if="{{item.has_refund_status}}" class="refund-card">
+					<view class="refund-title">{{item.refund_status_text}}</view>
+					<view class="refund-desc">{{item.refund_result_text}}</view>
+					<view class="refund-time">更新时间：{{item.refund_updated_at_text}}</view>
+				</view>
+			</view>
+		</view>
+	</view>
+
+	<view class="notice-card card {{activities.length ? '' : 'notice-card-empty'}}">
+		<view class="section-title">充值说明</view>
+		<view class="notice-text">1. 充值余额为平台统一钱包余额，可在接入门店点单时使用。</view>
+		<view class="notice-text">2. 赠送金额与充值本金同时到账，待支付充值单可继续支付或主动取消。</view>
+		<view class="notice-text">3. 如支付成功但余额未刷新，可退出重进“我的”页面查看最新余额。</view>
+	</view>
+
+	<view wx:if="{{pendingRechargeOrderId}}" class="submit-bar submit-bar-pending">
+		<view class="submit-main">
+			<view class="submit-label">{{pendingRechargeOrderId ? '待继续支付' : '当前选择'}}</view>
+			<view class="submit-amount">
+				{{pendingRechargeOrderId ? '继续支付充值订单' : (selectedActivityId ? '立即充值到账' : '请选择充值档位')}}
+			</view>
+		</view>
+		<view class="submit-actions submit-actions-pending">
+			<button class="submit-cancel-btn" loading="{{canceling}}" disabled="{{paying || canceling}}" bindtap="cancelPendingRecharge">取消订单</button>
+			<button class="btn-primary submit-btn submit-btn-pending" loading="{{paying}}" disabled="{{paying || canceling}}" bindtap="submitRecharge">继续支付</button>
+		</view>
+	</view>
+
+	<view wx:elif="{{activities.length}}" class="submit-bar">
+		<view class="submit-main">
+			<view class="submit-label">当前选择</view>
+			<view class="submit-amount">{{selectedActivityId ? '立即充值到账' : '请选择充值档位'}}</view>
+		</view>
+		<button class="btn-primary submit-btn" loading="{{paying}}" disabled="{{paying || canceling}}" bindtap="submitRecharge">去充值</button>
+	</view>
+
+	<view wx:if="{{refundDialogVisible}}" class="refund-dialog-mask" catchtouchmove="noop">
+		<view class="refund-dialog card">
+			<view class="refund-dialog-title">申请充值退款</view>
+			<view class="refund-dialog-desc">可选填写申请说明，平台审核时会看到这条备注。</view>
+			<textarea class="refund-dialog-textarea" maxlength="120" placeholder="例如：充值后暂不使用，申请退回原支付账户" value="{{refundRequestNote}}" bindinput="handleRefundNoteInput"></textarea>
+			<view class="refund-dialog-count">{{refundRequestNote.length}} / 120</view>
+			<view class="refund-dialog-actions">
+				<button class="refund-dialog-cancel" disabled="{{applyingRefundId > 0}}" bindtap="closeRefundDialog">取消</button>
+				<button class="refund-dialog-confirm" loading="{{applyingRefundId > 0}}" disabled="{{applyingRefundId > 0}}" bindtap="submitApplyRefund">提交申请</button>
+			</view>
+		</view>
+	</view>
+</view>

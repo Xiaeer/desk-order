@@ -1,0 +1,52 @@
+<view class="container" wx:if="{{order}}">
+  <!-- 订单状态 -->
+  <view class="status-banner status-bg-{{order.status}}">
+    <text class="status-text">{{statusText}}</text>
+    <text class="order-no-text">订单号：{{order.order_no}}</text>
+  </view>
+
+  <!-- 商品明细 -->
+  <view class="card">
+    <view class="section-title">商品明细</view>
+    <view class="order-item" wx:for="{{order.items}}" wx:key="id">
+      <view class="item-left">
+        <view class="item-main">
+          <view class="item-title-row">
+            <text class="item-name">{{item.name}}</text>
+            <text class="item-qty">×{{item.quantity}}</text>
+          </view>
+          <text wx:if="{{item.option_summary}}" class="item-option-summary">{{item.option_summary}}</text>
+        </view>
+      </view>
+      <text class="item-price">¥{{item.subtotal / 100}}</text>
+    </view>
+    <view class="total-line">
+      <text>合计</text>
+      <text class="total-amount">¥{{order.total_amount / 100}}</text>
+    </view>
+  </view>
+
+  <!-- 订单信息 -->
+  <view class="card">
+    <view class="info-row" wx:if="{{order.table_no_snapshot}}">
+      <text class="info-label">桌号</text>
+      <text class="info-val">{{order.table_no_snapshot}}</text>
+    </view>
+    <view class="info-row">
+      <text class="info-label">下单时间</text>
+      <text class="info-val">{{order.created_at}}</text>
+    </view>
+    <view class="info-row" wx:if="{{order.remark}}">
+      <text class="info-label">备注</text>
+      <text class="info-val">{{order.remark}}</text>
+    </view>
+  </view>
+
+  <!-- 操作按钮 -->
+  <view class="action-bar">
+    <button wx:if="{{order.status === 1}}" class="btn-primary" loading="{{loading}}" bindtap="acceptOrder">接单</button>
+    <button wx:if="{{order.status === 2}}" class="btn-primary" loading="{{loading}}" bindtap="completeOrder">完成订单</button>
+  </view>
+</view>
+
+<view class="empty-tip" wx:else>加载中...</view>

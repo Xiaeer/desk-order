@@ -1,0 +1,164 @@
+.refund-page {
+	padding: 24rpx;
+	background: #f6f7fb;
+	min-height: 100vh;
+}
+
+.subscribe-card {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 20rpx;
+	padding: 26rpx;
+	margin-bottom: 20rpx;
+	background: linear-gradient(145deg, #fff7ed, #ffffff);
+}
+
+.subscribe-title {
+	font-size: 30rpx;
+	font-weight: 700;
+	color: #101828;
+}
+
+.subscribe-desc {
+	margin-top: 8rpx;
+	font-size: 24rpx;
+	line-height: 1.7;
+	color: #667085;
+}
+
+.subscribe-btn {
+	margin: 0;
+	border: none;
+	border-radius: 999rpx;
+	padding: 0 24rpx;
+	height: 72rpx;
+	line-height: 72rpx;
+	background: linear-gradient(135deg, #ff8a33, #ff6a3d);
+	color: #ffffff;
+	font-size: 24rpx;
+	font-weight: 700;
+	flex-shrink: 0;
+}
+
+.tab-bar {
+	display: flex;
+	padding: 10rpx;
+	margin-bottom: 20rpx;
+}
+
+.tab-item {
+	flex: 1;
+	text-align: center;
+	padding: 16rpx 0;
+	font-size: 26rpx;
+	font-weight: 600;
+	color: #8b8f9c;
+	border-radius: 20rpx;
+}
+
+.tab-item.active {
+	background: #fff4ec;
+	color: #ff7a2d;
+}
+
+.record-card,
+.notice-card {
+	padding: 24rpx;
+	margin-bottom: 20rpx;
+}
+
+.record-top,
+.notice-top {
+	display: flex;
+	justify-content: space-between;
+	align-items: flex-start;
+	gap: 16rpx;
+}
+
+.record-title,
+.notice-title {
+	font-size: 28rpx;
+	font-weight: 700;
+	color: #101828;
+}
+
+.record-sub,
+.record-line,
+.notice-content,
+.notice-time {
+	margin-top: 8rpx;
+	font-size: 24rpx;
+	line-height: 1.7;
+	color: #667085;
+}
+
+.record-status {
+	padding: 8rpx 18rpx;
+	border-radius: 999rpx;
+	background: #eef2ff;
+	color: #3758f9;
+	font-size: 22rpx;
+	font-weight: 700;
+	flex-shrink: 0;
+}
+
+.record-result {
+	margin-top: 14rpx;
+	padding: 18rpx;
+	border-radius: 20rpx;
+	background: #fff7ed;
+	font-size: 24rpx;
+	line-height: 1.7;
+	color: #c2410c;
+}
+
+.record-action-row {
+	margin-top: 16rpx;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 16rpx;
+	padding: 20rpx;
+	border-radius: 20rpx;
+	background: #f8fafc;
+	border: 2rpx solid #e2e8f0;
+}
+
+.record-action-text {
+	flex: 1;
+	font-size: 24rpx;
+	line-height: 1.7;
+	color: #475467;
+}
+
+.record-cancel-btn {
+	margin: 0;
+	border: none;
+	border-radius: 999rpx;
+	padding: 0 24rpx;
+	min-width: 168rpx;
+	height: 68rpx;
+	line-height: 68rpx;
+	background: #eef2f6;
+	color: #344054;
+	font-size: 24rpx;
+	font-weight: 700;
+	flex-shrink: 0;
+}
+
+.notice-dot {
+	width: 16rpx;
+	height: 16rpx;
+	border-radius: 50%;
+	background: #ff6a3d;
+	margin-top: 12rpx;
+	flex-shrink: 0;
+}
+
+.empty {
+	padding: 60rpx 24rpx;
+	text-align: center;
+	font-size: 26rpx;
+	color: #8b8f9c;
+}

@@ -1,0 +1,48 @@
+<view class="container">
+  <!-- 店铺状态卡片 -->
+  <view class="card shop-status-card">
+    <view class="shop-header">
+      <text class="shop-name">{{shopName || '我的店铺'}}</text>
+      <view class="open-switch" bindtap="toggleOpen">
+        <text class="switch-label">{{isOpen ? '营业中' : '休息中'}}</text>
+        <view class="switch-dot {{isOpen ? 'on' : 'off'}}"></view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 今日概览 -->
+  <view class="card stats-card">
+    <view class="stat-item">
+      <text class="stat-num">{{todayCount}}</text>
+      <text class="stat-label">待处理订单</text>
+    </view>
+    <view class="stat-divider"></view>
+    <view class="stat-item">
+      <text class="stat-num">¥{{todayAmount / 100}}</text>
+      <text class="stat-label">待处理金额</text>
+    </view>
+  </view>
+
+  <!-- 待接单列表 -->
+  <view class="section-title">待接单</view>
+  <block wx:if="{{orders.length > 0}}">
+    <view class="card order-card" wx:for="{{orders}}" wx:key="id" bindtap="viewOrder" data-id="{{item.id}}">
+      <view class="order-top">
+        <text class="order-no">#{{item.order_no}}</text>
+        <text class="status-tag status-paid">待接单</text>
+      </view>
+      <view class="order-items-preview">
+        <view wx:for="{{item.items}}" wx:for-item="p" wx:key="id" class="item-preview-card">
+          <text class="item-name">{{p.name}}×{{p.quantity}}</text>
+          <text wx:if="{{p.option_summary}}" class="item-option-summary">{{p.option_summary}}</text>
+        </view>
+      </view>
+      <view wx:if="{{item.table_no_snapshot}}" class="order-table">桌号 {{item.table_no_snapshot}}</view>
+      <view class="order-bottom">
+        <text class="order-amount">¥{{item.total_amount / 100}}</text>
+        <view class="accept-btn" catchtap="acceptOrder" data-id="{{item.id}}">接单</view>
+      </view>
+    </view>
+  </block>
+  <view wx:else class="empty-tip">暂无待接单订单</view>
+</view>

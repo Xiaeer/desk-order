@@ -1,0 +1,43 @@
+<view class="container">
+  <view class="card">
+    <!-- 商品图片 -->
+    <view class="image-picker" bindtap="chooseImage">
+      <image wx:if="{{image}}" class="preview-img" src="{{image}}" mode="aspectFill" />
+      <view wx:else class="picker-placeholder">
+        <text class="plus">+</text>
+        <text class="picker-text">添加图片</text>
+      </view>
+    </view>
+    <view class="upload-tip">支持 jpg、jpeg、png、webp、gif，单张不超过 5MB</view>
+
+    <view class="form-item">
+      <text class="form-label">商品名</text>
+      <input class="form-input" placeholder="请输入商品名称" value="{{name}}" bindinput="onInputName" />
+    </view>
+
+    <view class="form-item">
+      <text class="form-label">价格(元)</text>
+      <input class="form-input" type="digit" placeholder="如: 12.50" value="{{price}}" bindinput="onInputPrice" />
+    </view>
+
+    <view class="form-item">
+      <text class="form-label">描述</text>
+      <input class="form-input" placeholder="商品描述（可选）" value="{{description}}" bindinput="onInputDesc" />
+    </view>
+
+    <view class="form-item">
+      <text class="form-label">排序</text>
+      <input class="form-input" type="number" placeholder="数字越小越前" value="{{sort}}" bindinput="onInputSort" />
+    </view>
+
+    <view class="form-item">
+      <text class="form-label">状态</text>
+      <view class="sale-switch" bindtap="toggleOnSale">
+        <text>{{isOnSale ? '在售' : '已下架'}}</text>
+        <view class="switch-indicator {{isOnSale ? 'on' : 'off'}}"></view>
+      </view>
+    </view>
+  </view>
+
+  <button class="btn-primary" loading="{{loading || uploadingImage}}" bindtap="handleSave">保存商品</button>
+</view>
