@@ -4,6 +4,12 @@
 
 DeskOrder 是一个完整的桌面扫码点餐系统，包含用户端小程序、商家端小程序、商户端 H5、POS 终端、后台管理系统和后端服务。
 
+## 演示视频
+
+[▶ 查看或下载 DeskOrder 功能演示视频](https://github.com/Xiaeer/desk-order/releases/download/v0.1.0/desk-order-demo.mp4)
+
+视频以 MP4 格式托管在 GitHub Release 中，大小约为 20 MB。
+
 ## 项目结构
 
 ```
