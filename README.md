@@ -2,7 +2,7 @@
 
 ## 项目简介
 
-DeskOrder 是一个完整的桌面扫码点餐系统，包含用户端小程序、商家端小程序、POS 终端、后台管理系统和后端服务。
+DeskOrder 是一个完整的桌面扫码点餐系统，包含用户端小程序、商家端小程序、商户端 H5、POS 终端、后台管理系统和后端服务。
 
 ## 项目结构
 
@@ -10,6 +10,7 @@ DeskOrder 是一个完整的桌面扫码点餐系统，包含用户端小程序�
 DeskOrder/
 ├── backend/          # 后端服务（Golang + Gin + GORM）
 ├── admin-web/        # 后台管理系统（Vue3 + Element Plus）
+├── merchant-h5/      # 商户端 H5（Vue3 + Vue Router + Axios + Vite）
 ├── mini-user/        # 用户端微信小程序
 ├── mini-merchant/    # 商家端微信小程序
 ├── pos-client/       # POS 终端客户端（Electron）
@@ -23,6 +24,7 @@ DeskOrder/
 | 后端 | Golang, Gin, GORM, MySQL, Redis, WebSocket, Viper, Zerolog |
 | 用户端 | 微信小程序原生 |
 | 商家端 | 微信小程序原生 |
+| 商户端 H5 | Vue3, Vue Router, Axios, Vite |
 | 后台管理 | Vue3, Element Plus, Vite, Pinia |
 | POS 终端 | Electron, Vue3 |
 
